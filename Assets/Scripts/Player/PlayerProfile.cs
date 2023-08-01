@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Player
 {
@@ -7,5 +8,11 @@ namespace Player
     {
         public float ChaseRange;
         public float MoveSpeed;
+        public float AttackCheckRange;
+        public float AttackRange;
+        public float AttackDamage;
+        
+        [Range(1,100)]
+        public int AttackSpeed;
     }
 }

@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 842b6c42fe7a4f558f3a135586f4fa1c, type: 3}
-  m_Name: PlayerProfile
+  m_Script: {fileID: 11500000, guid: 88cc28cf4f7c4dbd81ec6444a4298a2d, type: 3}
+  m_Name: EnemyProfile
   m_EditorClassIdentifier: 
-  ChaseRange: 15
-  MoveSpeed: 1
-  AttackCheckRange: 1
-  AttackRange: 0.5
-  AttackDamage: 10
-  AttackSpeed: 1
+  HP: 10

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Player.Animation;
@@ -28,10 +29,16 @@ public class PlayerMoveState : PlayerBaseState
         {
             FSM.ChangeState(PlayerStateType.Idle); 
         }
-        else
+        else if (Physics.OverlapSphereNonAlloc(transform.position, FSM.Profile.AttackCheckRange, FSM.EnemyCollides, GetLayerMasks.Enemy) > 0)
         {
-            Move2Target();
+            FSM.ChangeState(PlayerStateType.Attack);
         }
+        
+    }
+
+    private void FixedUpdate()
+    {
+        Move2Target();
     }
 
     private void Move2Target()
