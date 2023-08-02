@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c37ec5f8d68443baf8f680eef35f1e0, type: 3}
+  m_Name: EnemySpawnerProfile
+  m_EditorClassIdentifier: 
+  SerializableDictionary:
+    keys:
+    - Normal
+    values:
+    - {fileID: 8204577997692332501, guid: 67fcd23cb3b353b4c9376b68b3dc8797, type: 3}
+  SpawnCount: 5

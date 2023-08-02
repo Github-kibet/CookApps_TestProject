@@ -16,5 +16,6 @@ namespace Enemy.Animation
     public static class GetAnimationParameter
     {
         public static readonly int Dead = Animator.StringToHash("Dead");
+        public static readonly int Move = Animator.StringToHash("Move");
     }
 }

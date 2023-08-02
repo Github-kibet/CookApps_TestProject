@@ -13,3 +13,6 @@ MonoBehaviour:
   m_Name: EnemyProfile
   m_EditorClassIdentifier: 
   HP: 10
+  ChaseRange: 10
+  AttackRange: 0
+  MoveSpeed: 1

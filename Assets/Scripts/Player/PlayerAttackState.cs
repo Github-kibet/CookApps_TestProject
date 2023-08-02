@@ -33,17 +33,13 @@ public class PlayerAttackState : PlayerBaseState
     public override void Enter()
     {
         enabled = true;
+        
         SetAnimation();
     }
 
     public override void UnNotifyEnter()
     {
         SetAnimation();
-    }
-
-    private void Update()
-    {
-       
     }
 
     public override void Exit()
@@ -61,6 +57,8 @@ public class PlayerAttackState : PlayerBaseState
         FSM.Animator.SetTrigger(GetAnimationParameter.Attack1);
         
         FSM.Animator.speed = FSM.Profile.AttackSpeed;
+        
+        transform.LookAt(FSM.EnemyCollider[0].transform);
     }
 
     public void OnAttack1Trigger()
@@ -72,7 +70,10 @@ public class PlayerAttackState : PlayerBaseState
         {
             foreach (var target in targets)
             {
-                target.GetComponent<EnemyFSM>().OnDamged(FSM.Profile.AttackDamage);
+                if (target != null)
+                {
+                    target.GetComponent<EnemyFSM>().OnDamged(FSM.Profile.AttackDamage);
+                }
             }
         }
     }
@@ -81,6 +82,9 @@ public class PlayerAttackState : PlayerBaseState
     {
         Debug.Log("Callded Animation Attack1End!!");
         
-        FSM.ChangeState(PlayerStateType.Attack);
+        if(Physics.OverlapSphereNonAlloc(transform.position, FSM.Profile.AttackCheckRange, FSM.EnemyCollider, GetLayerMasks.Enemy) <= 0)
+            FSM.ChangeState(PlayerStateType.Move);
+        else
+            FSM.ChangeState(PlayerStateType.Attack);
     }
 }

@@ -4,29 +4,44 @@ using System.Collections.Generic;
 using Enemy;
 using Enemy.Animation;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class EnemyFSM : BaseFSM<EnemyStateType>
 {
     [SerializeField] private EnemyStateType StartStateType;
     [SerializeField] private Animator animator;
+    [SerializeField] private Rigidbody rigidbody;
+    [SerializeField] private CapsuleCollider capsuleCollider;
 
     public EnemyProfile Profile;
+    
+    [HideInInspector] public Collider[] PlayerCollider = new Collider[1];
 
     public Animator Animator { get { return animator; } }
+    public Rigidbody Rigidbody { get { return rigidbody; } }
+    public CapsuleCollider CapsuleCollider { get { return capsuleCollider; } }
     
     private float Hp;
     private void Awake()
     {
         ApplyState();
-        
-        animator = GetComponent<Animator>();
 
-        Hp = Profile.HP;
+        Initialize();
     }
     
     private void Start()
     {
         ChangeState(StartStateType);
+    }
+    
+    private void Initialize()
+    {
+        if (animator == null)  animator = GetComponent<Animator>();
+        if (rigidbody == null) rigidbody = GetComponent<Rigidbody>();
+        if (capsuleCollider == null) capsuleCollider = GetComponent<CapsuleCollider>();
+        if (Profile == null) Profile = Resources.Load<EnemyProfile>("ScriptableObject/Enemy/EnemyProfile");
+
+        Hp = Profile.HP;
     }
 
     public void OnDamged(float damage)

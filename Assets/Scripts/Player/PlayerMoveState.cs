@@ -25,11 +25,11 @@ public class PlayerMoveState : PlayerBaseState
     
     private void Update()
     {
-        if (Physics.OverlapSphereNonAlloc(transform.position, FSM.Profile.ChaseRange, FSM.EnemyCollides, GetLayerMasks.Enemy)==0)
+        if (Physics.OverlapSphereNonAlloc(transform.position, FSM.Profile.ChaseRange, FSM.EnemyCollider, GetLayerMasks.Enemy)==0)
         {
             FSM.ChangeState(PlayerStateType.Idle); 
         }
-        else if (Physics.OverlapSphereNonAlloc(transform.position, FSM.Profile.AttackCheckRange, FSM.EnemyCollides, GetLayerMasks.Enemy) > 0)
+        else if (Physics.OverlapSphereNonAlloc(transform.position, FSM.Profile.AttackCheckRange, FSM.EnemyCollider, GetLayerMasks.Enemy) > 0)
         {
             FSM.ChangeState(PlayerStateType.Attack);
         }
@@ -43,8 +43,8 @@ public class PlayerMoveState : PlayerBaseState
 
     private void Move2Target()
     {
-        Transform target = FSM.EnemyCollides[0].transform;
-        Vector3 targetDir = FSM.EnemyCollides[0].transform.position - transform.position;
+        Transform target = FSM.EnemyCollider[0].transform;
+        Vector3 targetDir = FSM.EnemyCollider[0].transform.position - transform.position;
 
         transform.LookAt(target);
         FSM.Rigidbody.velocity = targetDir.normalized * FSM.Profile.MoveSpeed;

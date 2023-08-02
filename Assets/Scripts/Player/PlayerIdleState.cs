@@ -25,7 +25,7 @@ public class PlayerIdleState : PlayerBaseState
 
     private void Update()
     {
-        if (Physics.OverlapSphereNonAlloc(transform.position, FSM.Profile.ChaseRange, FSM.EnemyCollides, GetLayerMasks.Enemy)>0)
+        if (Physics.OverlapSphereNonAlloc(transform.position, FSM.Profile.ChaseRange, FSM.EnemyCollider, GetLayerMasks.Enemy)>0)
         {
             FSM.ChangeState(PlayerStateType.Move);   
         }

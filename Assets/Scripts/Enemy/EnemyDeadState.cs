@@ -14,13 +14,16 @@ namespace Enemy
         {
             base.Enter();
             FSM.Animator.SetTrigger(GetAnimationParameter.Dead);
+
+            FSM.CapsuleCollider.enabled = false;
+            FSM.Rigidbody.isKinematic = true;
         }
 
         public void OnDeadEndTrigger()
         {
             Debug.Log("Callded Animation DeadEndTrigger!!");
             
-            Destroy(gameObject);
+            GetComponent<SpawnCallback>()?.Return();
         }
     }
 }

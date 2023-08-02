@@ -6,6 +6,9 @@ namespace Enemy
     public class EnemyProfile : ScriptableObject
     {
         public float HP;
-        
+        public float ChaseRange;
+        public float AttackRange;
+        public float MoveSpeed;
+
     }
 }
