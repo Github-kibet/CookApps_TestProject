@@ -15,6 +15,8 @@ public class EnemySpawnManager : MonoBehaviour
 
     private Dictionary<string, ObjectPool<GameObject>> poolDictionary;
 
+    private float SpawnTime = 0f;
+    private float SpawnCount = 0f;
     private void Awake()
     {
         Initialize();
@@ -23,11 +25,31 @@ public class EnemySpawnManager : MonoBehaviour
     private void Start()
     {
         CreateClone();
+
+        SpawnTime = Time.time;
+        SpawnCount = Profile.SpawnCount;
     }
 
     private void Update()
     {
+        if (SpawnCount > 0)
+        {
+            if (SpawnTime < Time.time)
+            {
+                Spawn();
+            }
+        }
+    }
+
+    private void Spawn()
+    {
+        GameObject clone = Pop("Normal");
+
+        clone.transform.position = Vector3.zero;
         
+        
+        SpawnTime = Time.time + Profile.SpawnTime;
+        --SpawnCount;
     }
 
     private void Initialize()
@@ -71,5 +93,6 @@ public class EnemySpawnManager : MonoBehaviour
     {
         if (!poolDictionary.ContainsKey(key)) return;
         poolDictionary[key].Release(obj);
+        ++SpawnCount;
     }
 }

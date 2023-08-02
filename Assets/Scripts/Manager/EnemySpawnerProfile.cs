@@ -6,5 +6,6 @@ namespace Manager
     public class EnemySpawnerProfile : SerializableDictionaryAsset<string,GameObject>
     {
         public int SpawnCount;
+        public float SpawnTime;
     }
 }
