@@ -11,9 +11,6 @@ public abstract class BaseFSM<T> : MonoBehaviour where T : Enum
     [SerializeField]
     public BaseState<T> currentState;
     public BaseState<T> CurrentState { get { return currentState; } }
-    [SerializeField]
-    public BaseState<T> previousState;
-    public BaseState<T> PreviousState { get { return previousState; } }
 
     [SerializeField]
     protected SerializableDictionary<T, BaseState<T>> stateTable = new SerializableDictionary<T, BaseState<T>>();
@@ -49,12 +46,12 @@ public abstract class BaseFSM<T> : MonoBehaviour where T : Enum
 
     public virtual void ChangeState(T updateStateType)
     {
-        //FSM¿¡ ÇØ´ç »óÅÂ°¡ ÀÖ´ÂÁö È®ÀÎ
+        //FSMì— í•´ë‹¹ ìƒíƒœê°€ ìˆëŠ”ì§€ í™•ì¸
         if (stateTable.ContainsKey(updateStateType))
         {
             var updateState = stateTable[updateStateType];
             
-            //Áßº¹ »óÅÂÀÌ¸é UnNotifyEnter ½ÇÇà
+            //ì¤‘ë³µ ìƒíƒœì´ë©´ UnNotifyEnter ì‹¤í–‰
             if (updateState == currentState)
             {
                 changeStateAction?.Invoke(updateStateType);
@@ -62,12 +59,12 @@ public abstract class BaseFSM<T> : MonoBehaviour where T : Enum
                 return;
             }
             
-            //»óÅÂ°¡ º¯°æµÇ¸é Exit È£Ãâ
+            //ìƒíƒœê°€ ë³€ê²½ë˜ë©´ Exit í˜¸ì¶œ
             currentState?.Exit();
             
             currentState = updateState;
 
-            //º¯°æµÈ »óÅÂ Enter È£Ãâ
+            //ë³€ê²½ëœ ìƒíƒœ Enter í˜¸ì¶œ
             changeStateAction?.Invoke(updateStateType);
             updateState.Enter();
         }

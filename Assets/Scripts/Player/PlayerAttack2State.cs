@@ -31,7 +31,7 @@ public class PlayerAttack2State : PlayerBaseState
         enabled = true;
         
         SetAnimation();
-        FSM.Attack2CoolTime = Time.time + FSM.Profile.Attack2CoolTime;
+        FSM.Attack2CoolTime = FSM.Profile.Attack2CoolTime;
     }
 
     public override void UnNotifyEnter()

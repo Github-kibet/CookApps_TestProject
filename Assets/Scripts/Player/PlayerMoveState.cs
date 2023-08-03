@@ -25,6 +25,11 @@ public class PlayerMoveState : PlayerBaseState
     
     private void Update()
     {
+      
+    }
+
+    private void FixedUpdate()
+    {
         float distance = Vector3.Distance(transform.position, FSM.TargetCollider.transform.position);
         if (FSM.TargetCollider!=null)
         {
@@ -42,10 +47,7 @@ public class PlayerMoveState : PlayerBaseState
         {
             FSM.ChangeState(PlayerStateType.Idle);
         }
-    }
-
-    private void FixedUpdate()
-    {
+        
         Move2Target();
     }
 

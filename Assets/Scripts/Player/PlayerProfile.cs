@@ -7,6 +7,7 @@ namespace Player
     public class PlayerProfile : ScriptableObject
     {
         public float HP;
+        public float HpRegenTime;
         public float ChaseRange;
         public float MoveSpeed;
         public float Attack1Range;

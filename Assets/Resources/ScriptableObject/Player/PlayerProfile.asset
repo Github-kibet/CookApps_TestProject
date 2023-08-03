@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: PlayerProfile
   m_EditorClassIdentifier: 
   HP: 100
+  HpRegenTime: 1
   ChaseRange: 15
   MoveSpeed: 1
   Attack1Range: 0.5
