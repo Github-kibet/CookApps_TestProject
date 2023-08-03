@@ -27,9 +27,9 @@ namespace Enemy
             {
                 FSM.ChangeState(EnemyStateType.Idle); 
             }
-            else if (Physics.OverlapSphereNonAlloc(transform.position, FSM.Profile.AttackRange, FSM.PlayerCollider, GetLayerMasks.Player) > 0)
+            else if (Physics.OverlapSphereNonAlloc(transform.position, FSM.Profile.AttackCheckRange, FSM.PlayerCollider, GetLayerMasks.Player) > 0)
             {
-                //FSM.ChangeState(EnemyStateType.Attack);
+                FSM.ChangeState(EnemyStateType.Attack);
             }
         
         }

@@ -1,5 +1,7 @@
+using System;
 using Player;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.Serialization;
 
 public class PlayerFSM : BaseFSM<PlayerStateType>
@@ -7,6 +9,7 @@ public class PlayerFSM : BaseFSM<PlayerStateType>
     [SerializeField] private PlayerStateType StartStateType;
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody rigidbody;
+    [SerializeField] private HpBarUI hpBarUI;
 
     public PlayerProfile Profile;
     
@@ -14,10 +17,25 @@ public class PlayerFSM : BaseFSM<PlayerStateType>
     [HideInInspector] public Collider[] EnemyCollider = new Collider[1];
     public Animator Animator { get { return animator; } }
     public Rigidbody Rigidbody { get { return rigidbody; } }
+
+    private float hp;
+    private float Hp
+    {
+        get
+        {
+            return hp;
+        }
+        set
+        {
+            hp = value;
+            hpBarUI.SetHp(Hp/Profile.HP);
+        }
+    }
     
     private void Awake()
     {
         ApplyState();
+        Initialize();
     }
 
     private void Start()
@@ -30,8 +48,24 @@ public class PlayerFSM : BaseFSM<PlayerStateType>
         if (animator == null) animator = GetComponent<Animator>();
         if (rigidbody == null) rigidbody = GetComponent<Rigidbody>();
         if (Profile == null) Profile = Resources.Load<PlayerProfile>("ScriptableObject/Player/PlayerProfile");
+        if (hpBarUI == null) hpBarUI = FindObjectOfType<HpBarUI>();
       
-        
+        hp = Profile.HP;
+    }
+
+    public void OnDamged(float damage)
+    {
+        if (Hp <= 0)
+        {
+         
+        }
+        else
+        {
+            Hp -= damage;
+
+            if (Hp < 0f)
+                Hp = 0f;
+        }
     }
     protected override void UpdateExcute()
     {

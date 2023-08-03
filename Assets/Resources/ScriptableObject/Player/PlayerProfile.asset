@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 842b6c42fe7a4f558f3a135586f4fa1c, type: 3}
   m_Name: PlayerProfile
   m_EditorClassIdentifier: 
+  HP: 100
   ChaseRange: 15
   MoveSpeed: 1
   AttackCheckRange: 1

@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88cc28cf4f7c4dbd81ec6444a4298a2d, type: 3}
   m_Name: EnemyProfile
   m_EditorClassIdentifier: 
-  HP: 10
+  HP: 100
   ChaseRange: 10
-  AttackRange: 0
+  AttackRange: 0.5
+  AttackDamage: 10
+  AttackCheckRange: 0.5
+  AttackSpeed: 1
   MoveSpeed: 1
