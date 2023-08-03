@@ -22,8 +22,7 @@ public class PlayerAttackState : PlayerBaseState
     {
         if (FSM == null)
             FSM = GetComponent<PlayerFSM>();
-            
-        //TRS행렬에서 회전행렬을 곱하여 회전 변환 해준다.
+        
         Matrix4x4 rotMatrix = Matrix4x4.TRS(AttackPoint.position, AttackPoint.rotation, AttackPoint.lossyScale);
         Gizmos.matrix = rotMatrix;
             
@@ -63,7 +62,6 @@ public class PlayerAttackState : PlayerBaseState
 
     public void OnAttack1Trigger()
     {
-        Debug.Log("Callded Animation Attack1Trigger!!");
         var targets = Physics.OverlapBox(AttackPoint.position, Vector3.one * 0.5f * FSM.Profile.AttackRange, AttackPoint.rotation, GetLayerMasks.Enemy);
 
         if (targets.Length>0)
@@ -80,8 +78,6 @@ public class PlayerAttackState : PlayerBaseState
 
     public void OnAttack1End()
     {
-        Debug.Log("Callded Animation Attack1End!!");
-        
         if(Physics.OverlapSphereNonAlloc(transform.position, FSM.Profile.AttackCheckRange, FSM.EnemyCollider, GetLayerMasks.Enemy) <= 0)
             FSM.ChangeState(PlayerStateType.Move);
         else

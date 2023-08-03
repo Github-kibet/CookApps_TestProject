@@ -6,6 +6,8 @@ using Manager;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.Serialization;
+using Util.Layer;
+using Random = UnityEngine.Random;
 
 public class EnemySpawnManager : MonoBehaviour
 {
@@ -17,6 +19,10 @@ public class EnemySpawnManager : MonoBehaviour
 
     private float SpawnTime = 0f;
     private float SpawnCount = 0f;
+
+    private RaycastHit[] startGroundRayHit = new RaycastHit[1];
+    private RaycastHit[] endGroundRayHit = new RaycastHit[1];
+    
     private void Awake()
     {
         Initialize();
@@ -44,12 +50,36 @@ public class EnemySpawnManager : MonoBehaviour
     private void Spawn()
     {
         GameObject clone = Pop("Normal");
+        
+        clone.transform.position = GetSpawnPoint();
 
-        clone.transform.position = Vector3.zero;
-        
-        
         SpawnTime = Time.time + Profile.SpawnTime;
         --SpawnCount;
+    }
+
+    private Vector3 GetSpawnPoint()
+    {
+        Camera mainCam = Camera.main;
+
+        Vector3 startPos = mainCam.ScreenToWorldPoint(Vector3.zero);
+        Vector3 endPos = mainCam.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
+
+        Physics.RaycastNonAlloc(startPos, mainCam.transform.forward, startGroundRayHit, mainCam.farClipPlane,
+            GetLayerMasks.Ground);
+        Physics.RaycastNonAlloc(endPos, mainCam.transform.forward, endGroundRayHit, mainCam.farClipPlane,
+            GetLayerMasks.Ground);
+
+        Vector3 startGroundPoint = startGroundRayHit[0].point;
+        Vector3 endGroundPoint = endGroundRayHit[0].point;
+
+
+        Debug.DrawLine(startPos, startGroundPoint, Color.blue, 1f);
+        Debug.DrawLine(endPos, endGroundPoint, Color.blue, 1f);
+
+        float xPos = Random.Range(startGroundPoint.x, endGroundPoint.x);
+        float zPos = Random.Range(startGroundPoint.z, endGroundPoint.z);
+
+        return new Vector3(xPos, startGroundPoint.y, zPos);
     }
 
     private void Initialize()

@@ -22,7 +22,16 @@ public class PlayerMoveState : PlayerBaseState
     {
        
     }
-    
+
+    private void OnDrawGizmos()
+    {
+        if (FSM == null)
+            FSM = GetComponent<PlayerFSM>();
+        
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position,FSM.Profile.ChaseRange);
+    }
+
     private void Update()
     {
         if (Physics.OverlapSphereNonAlloc(transform.position, FSM.Profile.ChaseRange, FSM.EnemyCollider, GetLayerMasks.Enemy)==0)

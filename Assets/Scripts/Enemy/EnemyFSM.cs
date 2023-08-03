@@ -33,7 +33,21 @@ public class EnemyFSM : BaseFSM<EnemyStateType>
     {
         ChangeState(StartStateType);
     }
-    
+
+    private void OnEnable()
+    {
+        if (currentState?.StateType==EnemyStateType.Dead)
+        {
+            Respawn();
+        }
+    }
+
+    private void Respawn()
+    {
+        Initialize();
+        ChangeState(StartStateType);
+    }
+
     private void Initialize()
     {
         if (animator == null)  animator = GetComponent<Animator>();
@@ -41,6 +55,9 @@ public class EnemyFSM : BaseFSM<EnemyStateType>
         if (capsuleCollider == null) capsuleCollider = GetComponent<CapsuleCollider>();
         if (Profile == null) Profile = Resources.Load<EnemyProfile>("ScriptableObject/Enemy/EnemyProfile");
 
+        CapsuleCollider.enabled = true;
+        Rigidbody.isKinematic = false;
+        
         Hp = Profile.HP;
     }
 
