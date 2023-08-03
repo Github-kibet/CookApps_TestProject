@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HP: 100
   ChaseRange: 10
-  AttackRange: 0.5
   AttackDamage: 10
-  AttackCheckRange: 0.5
+  AttackCheckRange: 1
   AttackSpeed: 1
   MoveSpeed: 1
