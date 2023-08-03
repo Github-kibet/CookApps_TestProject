@@ -23,12 +23,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5025844324722581164}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.54}
+  m_LocalRotation: {x: -0.000000059604645, y: -0, z: -0.000005930662, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5336674969406833318}
+  m_Father: {fileID: 3333268396278453112}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6341130158852720174
@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 8927586641591490554}
   - component: {fileID: 324103490668369898}
   - component: {fileID: 5821641340359247520}
+  - component: {fileID: 4987372419991637650}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -67,6 +68,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8375267601377005343}
+  - {fileID: 7895299553319871942}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -163,8 +165,7 @@ MonoBehaviour:
   rigidbody: {fileID: 4124716431287467723}
   hpBarUI: {fileID: 0}
   Profile: {fileID: 11400000, guid: 152ac52e065c1774d9d9c46f17baefbe, type: 2}
-  EnemyCollider:
-  - {fileID: 0}
+  TargetCollider: {fileID: 0}
 --- !u!114 &8927586641591490554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,6 +223,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stateType: 2
+  enterStateEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  executeStateEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  exitStateEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  AttackPoint: {fileID: 7895299553319871942}
+--- !u!114 &4987372419991637650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6341130158852720174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c8c0012f2364288b5be158326f9a5d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stateType: 3
   enterStateEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -583,17 +607,9 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 9500000, guid: ab9dbc490785121438b41865331306bd, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 400130, guid: ab9dbc490785121438b41865331306bd, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7895299553319871942}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab9dbc490785121438b41865331306bd, type: 3}
---- !u!4 &5336674969406833318 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400130, guid: ab9dbc490785121438b41865331306bd, type: 3}
-  m_PrefabInstance: {fileID: 5336674969406445988}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5336674969406833484 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400104, guid: ab9dbc490785121438b41865331306bd, type: 3}

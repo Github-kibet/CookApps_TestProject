@@ -14,10 +14,12 @@ public class PlayerFSM : BaseFSM<PlayerStateType>
     public PlayerProfile Profile;
     
     
-    [HideInInspector] public Collider[] EnemyCollider = new Collider[1];
+    [HideInInspector] public Collider TargetCollider = new Collider();
     public Animator Animator { get { return animator; } }
     public Rigidbody Rigidbody { get { return rigidbody; } }
 
+    public float Attack2CoolTime { get; set; }
+    
     private float hp;
     private float Hp
     {
@@ -51,6 +53,7 @@ public class PlayerFSM : BaseFSM<PlayerStateType>
         if (hpBarUI == null) hpBarUI = FindObjectOfType<HpBarUI>();
       
         hp = Profile.HP;
+        Attack2CoolTime = Time.time;
     }
 
     public void OnDamged(float damage)

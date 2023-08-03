@@ -15,7 +15,8 @@ MonoBehaviour:
   HP: 100
   ChaseRange: 15
   MoveSpeed: 1
-  AttackCheckRange: 1
-  AttackRange: 0.5
+  Attack1Range: 0.5
+  Attack2Range: 3
+  Attack2CoolTime: 5
   AttackDamage: 10
   AttackSpeed: 1

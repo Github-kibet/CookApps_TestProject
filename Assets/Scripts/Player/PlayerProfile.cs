@@ -9,8 +9,9 @@ namespace Player
         public float HP;
         public float ChaseRange;
         public float MoveSpeed;
-        public float AttackCheckRange;
-        public float AttackRange;
+        public float Attack1Range;
+        public float Attack2Range;
+        public float Attack2CoolTime;
         public float AttackDamage;
         
         [Range(1,100)]

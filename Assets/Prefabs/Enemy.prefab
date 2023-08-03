@@ -286,7 +286,6 @@ MonoBehaviour:
   exitStateEvent:
     m_PersistentCalls:
       m_Calls: []
-  AttackPoint: {fileID: 8576232587600933353}
 --- !u!1001 &5167260844367320775
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -41980,14 +41980,14 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.4
-    functionName: OnAttack1Trigger
+    functionName: OnAttackTrigger
     data: 
-    objectReferenceParameter: {fileID: 11500000, guid: d58570bdc5c04c85a53c6cce2a3bb9fa, type: 3}
+    objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 0.8333333
-    functionName: OnAttack1End
+    functionName: OnAttackEnd
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: d58570bdc5c04c85a53c6cce2a3bb9fa, type: 3}
     floatParameter: 0

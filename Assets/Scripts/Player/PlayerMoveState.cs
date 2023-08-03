@@ -22,27 +22,26 @@ public class PlayerMoveState : PlayerBaseState
     {
        
     }
-
-    private void OnDrawGizmos()
-    {
-        if (FSM == null)
-            FSM = GetComponent<PlayerFSM>();
-        
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position,FSM.Profile.ChaseRange);
-    }
-
+    
     private void Update()
     {
-        if (Physics.OverlapSphereNonAlloc(transform.position, FSM.Profile.ChaseRange, FSM.EnemyCollider, GetLayerMasks.Enemy)==0)
+        float distance = Vector3.Distance(transform.position, FSM.TargetCollider.transform.position);
+        if (FSM.TargetCollider!=null)
         {
-            FSM.ChangeState(PlayerStateType.Idle); 
+            if (distance > FSM.Profile.ChaseRange)
+                FSM.ChangeState(PlayerStateType.Idle);
+            else if(FSM.Attack2CoolTime<Time.time)
+            {
+                if (distance < FSM.Profile.Attack2Range)
+                    FSM.ChangeState(PlayerStateType.Attack2);
+            }
+            else if (distance < FSM.Profile.Attack1Range)
+                FSM.ChangeState(PlayerStateType.Attack1);
         }
-        else if (Physics.OverlapSphereNonAlloc(transform.position, FSM.Profile.AttackCheckRange, FSM.EnemyCollider, GetLayerMasks.Enemy) > 0)
+        else
         {
-            FSM.ChangeState(PlayerStateType.Attack);
+            FSM.ChangeState(PlayerStateType.Idle);
         }
-        
     }
 
     private void FixedUpdate()
@@ -52,8 +51,8 @@ public class PlayerMoveState : PlayerBaseState
 
     private void Move2Target()
     {
-        Transform target = FSM.EnemyCollider[0].transform;
-        Vector3 targetDir = FSM.EnemyCollider[0].transform.position - transform.position;
+        Transform target = FSM.TargetCollider.transform;
+        Vector3 targetDir = target.position - transform.position;
 
         transform.LookAt(target);
         FSM.Rigidbody.velocity = targetDir.normalized * FSM.Profile.MoveSpeed;

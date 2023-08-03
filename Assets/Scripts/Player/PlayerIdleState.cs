@@ -9,6 +9,8 @@ using Util.Layer;
 
 public class PlayerIdleState : PlayerBaseState
 {
+    private float minRange;
+    private Collider Target;
     public PlayerIdleState()
     {
         stateType = PlayerStateType.Idle;
@@ -16,6 +18,7 @@ public class PlayerIdleState : PlayerBaseState
     public override void Enter()
     {
         enabled = true;
+        minRange = float.MaxValue;
     }
 
     public override void UnNotifyEnter()
@@ -25,9 +28,28 @@ public class PlayerIdleState : PlayerBaseState
 
     private void Update()
     {
-        if (Physics.OverlapSphereNonAlloc(transform.position, FSM.Profile.ChaseRange, FSM.EnemyCollider, GetLayerMasks.Enemy)>0)
+        CheckChaseTarget();
+    }
+
+    private void CheckChaseTarget()
+    {
+        var hitColliders = Physics.OverlapSphere(transform.position, FSM.Profile.ChaseRange, GetLayerMasks.Enemy);
+
+        if (hitColliders.Length > 0)
         {
-            FSM.ChangeState(PlayerStateType.Move);   
+            foreach (var target in hitColliders)
+            {
+                float distance = Vector3.Distance(transform.position, target.transform.position);
+
+                if (minRange > distance)
+                {
+                    minRange = distance;
+                    Target = target;
+                }
+            }
+
+            FSM.TargetCollider = Target;
+            FSM.ChangeState(PlayerStateType.Move);
         }
     }
 

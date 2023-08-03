@@ -7,7 +7,6 @@ namespace Enemy
     {
         public float HP;
         public float ChaseRange;
-        public float AttackRange;
         public float AttackDamage;
         public float AttackCheckRange;
         public float AttackSpeed;

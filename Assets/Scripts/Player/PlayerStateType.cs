@@ -3,6 +3,7 @@ public enum PlayerStateType
 {
     Idle,
     Move,
-    Attack,
+    Attack1,
+    Attack2,
     Dead
 }
