@@ -1,4 +1,5 @@
 using System;
+using Cinemachine;
 using Player;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
@@ -10,6 +11,7 @@ public class PlayerFSM : BaseFSM<PlayerStateType>
     [SerializeField] private Animator animator;
     [SerializeField] private Rigidbody rigidbody;
     [SerializeField] private HpBarUI hpBarUI;
+    [SerializeField] private ExpBarUI expBarUI;
     [SerializeField] private CoolTimeUI attack2CoolTimeUI;
     [SerializeField] private CoolTimeUI hpRegenCoolTimeUI;
 
@@ -35,7 +37,7 @@ public class PlayerFSM : BaseFSM<PlayerStateType>
     }
     
     private float hpRegenCoolTime;
-    public float HpRegenCoolTime
+    private float HpRegenCoolTime
     {
         get
         {
@@ -49,9 +51,6 @@ public class PlayerFSM : BaseFSM<PlayerStateType>
     }
     
     private float hp;
-
-
-    
     private float Hp
     {
         get
@@ -67,17 +66,59 @@ public class PlayerFSM : BaseFSM<PlayerStateType>
             hpBarUI.SetHp(Hp/Profile.HP);
         }
     }
+
+    private int level;
+    public int Level
+    {
+        get
+        {
+            return level;
+        }
+
+        set
+        {
+            level = value;
+            expBarUI.SetLevel(level);
+        }
+    }
     
+    
+    private float exp;
+    private float EXP
+    {
+        get
+        {
+            return exp;
+        }
+
+        set
+        {
+            exp = value;
+            expBarUI.SetEXP(value/(level*Profile.EXP));
+        }
+    }
+
     private void Awake()
     {
         ApplyState();
-        Initialize();
     }
 
     private void Start()
     {
+        Initialize();
         ChangeState(StartStateType);
     }
+    
+    private void FixedUpdate()
+    {
+        UpdateExcute();
+    }
+
+    protected override void UpdateExcute()
+    {
+        HpGeneration();
+    }
+
 
     private void Initialize()
     {
@@ -88,10 +129,21 @@ public class PlayerFSM : BaseFSM<PlayerStateType>
   
       
         hp = Profile.HP;
+        Level = 1;
+        EXP = 0f;
+
         Attack2CoolTime = Time.time;
         HpRegenCoolTime = Time.time;
     }
-
+    private void HpGeneration()
+    {
+        if (HpRegenCoolTime < Time.time&&Hp<Profile.HP)
+        {
+            Hp += Profile.AttackDamage;
+            HpRegenCoolTime = Profile.HpRegenTime;
+        }
+    }
+    
     public void OnDamged(float damage)
     {
         if (Hp <= 0)
@@ -104,22 +156,15 @@ public class PlayerFSM : BaseFSM<PlayerStateType>
         }
     }
 
-    private void FixedUpdate()
+    public void AddExp(float exp)
     {
-        UpdateExcute();
-    }
+        float maxExp = Profile.EXP*level;
+        EXP += exp;
 
-    protected override void UpdateExcute()
-    {
-        HpGeneration();
-    }
-
-    private void HpGeneration()
-    {
-        if (HpRegenCoolTime < Time.time&&Hp<Profile.HP)
+        if (EXP >= maxExp)
         {
-            Hp += Profile.AttackDamage;
-            HpRegenCoolTime = Profile.HpRegenTime;
+            EXP -= maxExp;
+            ++Level;
         }
     }
 }

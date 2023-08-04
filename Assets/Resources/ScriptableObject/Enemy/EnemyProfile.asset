@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: EnemyProfile
   m_EditorClassIdentifier: 
   HP: 100
+  EXP: 10
   ChaseRange: 10
   AttackDamage: 10
   AttackCheckRange: 1

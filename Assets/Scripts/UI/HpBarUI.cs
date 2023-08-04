@@ -5,7 +5,7 @@ public class HpBarUI : MonoBehaviour
 {
     private Slider hpSlider;
 
-    private void Start()
+    private void Awake()
     {
         hpSlider = GetComponent<Slider>();
     }

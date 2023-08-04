@@ -908,7 +908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.9093014, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1730,7 +1730,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1705461761}
   - component: {fileID: 1705461763}
-  - component: {fileID: 1705461762}
+  - component: {fileID: 1705461764}
   m_Layer: 5
   m_Name: 'ExpBar '
   m_TagString: Untagged
@@ -1756,23 +1756,11 @@ RectTransform:
   m_Father: {fileID: 1703405045}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 35, y: -77}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 20}
-  m_Pivot: {x: 0, y: 1}
---- !u!114 &1705461762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1705461760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8f91946ee6590f4396e9e649c524ec6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1705461763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1820,10 +1808,23 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1705461764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705461760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68cd75f3df74447a9fea39a32e3c1a11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelLabel: {fileID: 1953901935}
 --- !u!1 &1761827160
 GameObject:
   m_ObjectHideFlags: 0
@@ -2235,7 +2236,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'HP:'
+  m_Text: 'Level:'
 --- !u!222 &1953901936
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2848,6 +2849,10 @@ PrefabInstance:
       propertyPath: hpBarUI
       value: 
       objectReference: {fileID: 593239449}
+    - target: {fileID: 5744442358760487316, guid: 6b6be43a3e2661d4db7a2b0cfd74c6bd, type: 3}
+      propertyPath: expBarUI
+      value: 
+      objectReference: {fileID: 1705461764}
     - target: {fileID: 5744442358760487316, guid: 6b6be43a3e2661d4db7a2b0cfd74c6bd, type: 3}
       propertyPath: attack2CoolTimeUI
       value: 

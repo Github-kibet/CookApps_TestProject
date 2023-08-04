@@ -6,11 +6,14 @@ namespace Enemy
     public class EnemyProfile : ScriptableObject
     {
         public float HP;
+        public float EXP;
         public float ChaseRange;
         public float AttackDamage;
         public float AttackCheckRange;
         public float AttackSpeed;
         public float MoveSpeed;
+
+        
 
     }
 }

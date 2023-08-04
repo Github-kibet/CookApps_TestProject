@@ -7,6 +7,7 @@ namespace Player
     public class PlayerProfile : ScriptableObject
     {
         public float HP;
+        public float EXP;
         public float HpRegenTime;
         public float ChaseRange;
         public float MoveSpeed;
@@ -14,7 +15,7 @@ namespace Player
         public float Attack2Range;
         public float Attack2CoolTime;
         public float AttackDamage;
-        
+
         [Range(1,100)]
         public int AttackSpeed;
     }

@@ -1,4 +1,5 @@
-﻿using Enemy.Animation;
+﻿using System.Linq;
+using Enemy.Animation;
 using UnityEngine;
 
 namespace Enemy
@@ -21,8 +22,7 @@ namespace Enemy
 
         public void OnDeadEndTrigger()
         {
-            Debug.Log("Callded Animation DeadEndTrigger!!");
-            
+            FSM.PlayerCollider[0].GetComponent<PlayerFSM>().AddExp(FSM.Profile.EXP);
             GetComponent<SpawnCallback>()?.Return();
         }
     }

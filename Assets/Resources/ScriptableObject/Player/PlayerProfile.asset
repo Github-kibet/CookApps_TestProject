@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: PlayerProfile
   m_EditorClassIdentifier: 
   HP: 100
+  EXP: 100
   HpRegenTime: 1
   ChaseRange: 15
   MoveSpeed: 1
   Attack1Range: 1
   Attack2Range: 2
   Attack2CoolTime: 2
-  AttackDamage: 10
+  AttackDamage: 100
   AttackSpeed: 1
