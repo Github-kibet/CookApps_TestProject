@@ -1,5 +1,4 @@
 ﻿using Manager;
-using TMPro.EditorUtilities;
 using UnityEditor;
 using UnityEngine;
 
@@ -17,6 +16,6 @@ public class EnemySpawnerProfileEditor : SerializableDictionaryEditor<EnemySpawn
     {
         base.OnInspectorGUI();
         _obj.SpawnCount = EditorGUILayout.IntField("몬스터의 동시 생성 가능한 최대 수 ", _obj.SpawnCount);
-        _obj.SpawnTime = EditorGUILayout.IntField("몬스터의 생성 주기 ", _obj.SpawnCount);
+        _obj.SpawnTime = EditorGUILayout.FloatField("몬스터의 생성 주기", _obj.SpawnTime);
     }
 }

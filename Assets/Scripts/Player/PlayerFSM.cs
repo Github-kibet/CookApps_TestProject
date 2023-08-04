@@ -1,9 +1,5 @@
-using System;
-using Cinemachine;
 using Player;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.Serialization;
 
 public class PlayerFSM : BaseFSM<PlayerStateType>
 {

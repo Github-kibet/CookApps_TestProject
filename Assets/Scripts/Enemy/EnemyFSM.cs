@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using Enemy;
-using Enemy.Animation;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class EnemyFSM : BaseFSM<EnemyStateType>
 {

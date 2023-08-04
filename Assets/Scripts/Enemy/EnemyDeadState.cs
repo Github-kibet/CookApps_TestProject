@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using Enemy.Animation;
-using UnityEngine;
+﻿using Enemy.Animation;
 
 namespace Enemy
 {

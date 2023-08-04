@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using Player.Animation;
-using Util.Layer;
 
 
 public class PlayerMoveState : PlayerBaseState

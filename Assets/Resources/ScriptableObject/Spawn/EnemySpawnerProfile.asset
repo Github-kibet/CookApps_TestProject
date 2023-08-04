@@ -17,5 +17,5 @@ MonoBehaviour:
     - Normal
     values:
     - {fileID: 8204577997692332501, guid: 67fcd23cb3b353b4c9376b68b3dc8797, type: 3}
-  SpawnCount: 5
-  SpawnTime: 5
+  SpawnCount: 10
+  SpawnTime: 1

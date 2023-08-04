@@ -1,5 +1,4 @@
-﻿using Enemy.Animation;
-using UnityEngine;
+﻿using UnityEngine;
 using Util.Layer;
 
 namespace Enemy

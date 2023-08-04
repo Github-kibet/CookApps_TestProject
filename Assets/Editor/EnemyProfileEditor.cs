@@ -1,6 +1,4 @@
 ﻿using Enemy;
-using Manager;
-using TMPro.EditorUtilities;
 using UnityEditor;
 using UnityEngine;
 

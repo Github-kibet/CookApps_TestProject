@@ -1,7 +1,4 @@
-﻿using Enemy;
-using Manager;
-using Player;
-using TMPro.EditorUtilities;
+﻿using Player;
 using UnityEditor;
 using UnityEngine;
 

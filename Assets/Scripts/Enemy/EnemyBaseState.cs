@@ -1,5 +1,4 @@
-﻿using TMPro;
-
+﻿
 public class EnemyBaseState:BaseState<EnemyStateType>
 {
     public EnemyFSM FSM { get; protected set; }
