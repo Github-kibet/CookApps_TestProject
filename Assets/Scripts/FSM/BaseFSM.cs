@@ -11,8 +11,7 @@ public abstract class BaseFSM<T> : MonoBehaviour where T : Enum
     [SerializeField]
     public BaseState<T> currentState;
     public BaseState<T> CurrentState { get { return currentState; } }
-
-    [SerializeField]
+    
     protected SerializableDictionary<T, BaseState<T>> stateTable = new SerializableDictionary<T, BaseState<T>>();
     public SerializableDictionary<T, BaseState<T>> StateTable { get { return stateTable; } }
 

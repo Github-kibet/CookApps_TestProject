@@ -20,5 +20,5 @@ MonoBehaviour:
   Attack1Range: 1
   Attack2Range: 2
   Attack2CoolTime: 2
-  AttackDamage: 100
+  AttackDamage: 10
   AttackSpeed: 1

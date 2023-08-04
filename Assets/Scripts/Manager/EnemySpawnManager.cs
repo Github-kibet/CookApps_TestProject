@@ -72,10 +72,6 @@ public class EnemySpawnManager : MonoBehaviour
         Vector3 startGroundPoint = startGroundRayHit[0].point;
         Vector3 endGroundPoint = endGroundRayHit[0].point;
 
-
-        Debug.DrawLine(startPos, startGroundPoint, Color.blue, 1f);
-        Debug.DrawLine(endPos, endGroundPoint, Color.blue, 1f);
-
         float xPos = Random.Range(startGroundPoint.x, endGroundPoint.x);
         float zPos = Random.Range(startGroundPoint.z, endGroundPoint.z);
 

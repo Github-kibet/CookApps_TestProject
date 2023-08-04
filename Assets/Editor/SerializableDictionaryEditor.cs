@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SerializableDictionaryEditor<T,TV>: Editor where T:SerializableDictionaryAsset<string,TV> where TV: UnityEngine.Object
 {
-    private T _obj;
+    protected T _obj;
     private string _key;
     private TV _value;
     private static SerializableDictionary<string,TV> _serializableDictionary=new ();
@@ -18,9 +18,10 @@ public class SerializableDictionaryEditor<T,TV>: Editor where T:SerializableDict
 
     public override void OnInspectorGUI()
     {
+        GUILayout.BeginVertical("적 스폰 설정", new GUIStyle(GUI.skin.window));
+        
         _key = EditorGUILayout.TextField(TextTitle,_key);
         _value = (TV)EditorGUILayout.ObjectField(ObjectTitle,_value,typeof(TV), true);
-
         SerializedProperty serializedProperty = serializedObject.FindProperty("SerializableDictionary");
 
         var keys = serializedProperty.FindPropertyRelative("keys");
@@ -48,7 +49,13 @@ public class SerializableDictionaryEditor<T,TV>: Editor where T:SerializableDict
                 _obj.SerializableDictionary = _serializableDictionary;
             }
         }
-        DrawDefaultInspector();
+
+        EditorGUILayout.PropertyField(serializedProperty,new GUIContent("스폰 Dictionary"));
+        
+        GUILayout.EndVertical();
+        
+        GUILayout.Space(30f);
+
         serializedObject.ApplyModifiedProperties();
         EditorUtility.SetDirty(_obj);
 

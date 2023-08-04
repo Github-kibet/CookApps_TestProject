@@ -10,10 +10,9 @@ namespace Enemy
         public float ChaseRange;
         public float AttackDamage;
         public float AttackCheckRange;
-        public float AttackSpeed;
         public float MoveSpeed;
 
-        
+        public int AttackSpeed;
 
     }
 }

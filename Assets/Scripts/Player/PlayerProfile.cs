@@ -16,7 +16,7 @@ namespace Player
         public float Attack2CoolTime;
         public float AttackDamage;
 
-        [Range(1,100)]
+
         public int AttackSpeed;
     }
 }

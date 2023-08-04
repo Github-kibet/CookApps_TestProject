@@ -16,16 +16,6 @@ public class PlayerAttack2State : PlayerBaseState
     {
         stateType = PlayerStateType.Attack2;
     }
-
-    private void OnDrawGizmos()
-    {
-        if (FSM == null)
-            FSM = GetComponent<PlayerFSM>();
-
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(AttackPoint.position, FSM.Profile.Attack2Range);
-    }
-
     public override void Enter()
     {
         enabled = true;
@@ -75,4 +65,16 @@ public class PlayerAttack2State : PlayerBaseState
     {
         FSM.ChangeState(PlayerStateType.Idle);
     }
+    
+    
+#if UNITY_EDITOR
+    private void OnDrawGizmos()
+    {
+        if (FSM == null)
+            FSM = GetComponent<PlayerFSM>();
+
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(AttackPoint.position, FSM.Profile.Attack2Range);
+    }
+#endif
 }
